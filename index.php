@@ -7,10 +7,11 @@ require_once "vendor/autoload.php";
 
 $app = new \Slim\App();
 
-$app->get('/produtos', function(Request $request, Response $response, array $args) {
-    $limit = $request->getQueryParams()['limit'] ?? 15;
+$app->get('/produtos[/{nome}]', function(Request $request, Response $response, array $args) {
+    $limit = $request->getQueryParams()['limit'] ?? 25;
+    $nome = $args['nome']  ?? 'mouse';
 
-    return $response->getBody()->write("{$limit} Produtos do Banco de Dados!");
+    return $response->getBody()->write("{$limit} produtos do banco de dados com o nome {$nome}!");
 });
 
 $app->run();
