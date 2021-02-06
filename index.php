@@ -1,17 +1,6 @@
 <?php
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-
-require_once "vendor/autoload.php";
-
-$app = new \Slim\App();
-
-$app->get('/produtos[/{nome}]', function(Request $request, Response $response, array $args) {
-    $limit = $request->getQueryParams()['limit'] ?? 25;
-    $nome = $args['nome']  ?? 'mouse';
-
-    return $response->getBody()->write("{$limit} produtos do banco de dados com o nome {$nome}!");
-});
-
-$app->run();
+require_once './vendor/autoload.php';
+require_once './env.php';
+require_once './src/slimConfiguration.php';
+require_once './routes/index.php';
