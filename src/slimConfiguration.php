@@ -2,7 +2,8 @@
 
 namespace src;
 
-function slimConfiguration(): \Slim\Container {
+function slimConfiguration(): \Slim\Container 
+{
     $configuration = [
         'settings' => [
             'displayErrorDetails' => getenv('DISPLAY_ERRORS_DETAILS'),
